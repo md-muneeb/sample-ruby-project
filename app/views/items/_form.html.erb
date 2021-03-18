@@ -1,0 +1,36 @@
+<%= form_with model: item do |form| %>
+  
+  <div style='color:red'>
+      <% item.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+
+  <br/>
+  
+  <table border=1 style='width:70%; margin:0 auto; text-align:left;'>
+   <tr>
+      <td><%= form.label :name, 'Item Name' %>  </td>
+      <td><%= form.text_field :name %> </td>
+   </tr>
+   <tr>
+      <td><%= form.label :desc, 'Item Description' %>  </td>
+      <td><%= form.text_area :desc, size: "60x3" %> </td>
+   </tr>
+  
+   <tr>
+      <td><%= form.label :cost, 'Item Cost' %>  </td>
+      <td><%= form.text_field :cost %> </td>
+   </tr>
+   
+   <tr>
+      <td><%= form.label :fish_id %>  </td>
+      <td><%= form.collection_select :fish_id, Fish.all, :id, :name %> </td>
+   </tr>
+   
+   </table>
+   
+   <br/>
+   <%= form.submit %>
+   
+  <% end %>

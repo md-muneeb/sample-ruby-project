@@ -1,0 +1,18 @@
+<h1>Fishes</h1>
+
+<table border=1>
+ <tr>
+ <td> Name </td>
+ <td> Age </td>
+ </tr>
+  <% @fishes.each do |fish| %>
+    <tr>
+    <td>
+      <%= fish.name %>
+    </td>
+    <td>
+      <%= fish.age %>
+    </td>
+    </tr>
+  <% end %>
+</table>

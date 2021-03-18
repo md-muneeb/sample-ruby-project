@@ -1,0 +1,4 @@
+<h1>Edit Item</h1>
+<%= render "form", item: @item %>
+<br/>
+<button><%= link_to 'Delete Item', item_path(@item), method: :delete, data: { confirm: 'Are you sure?' } %></button>

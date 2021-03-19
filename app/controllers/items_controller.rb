@@ -8,16 +8,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    begin
-      @item = Item.find(params[:id])
-    rescue ActiveRecord::RecordNotFound => e
-      render json: {message: e}, status: 404
-    rescue => e
-      render json: {message: e}, status: 404
-    end
-  end
-
   def new
     @item = Item.new
   end

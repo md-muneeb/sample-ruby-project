@@ -1,0 +1,4 @@
+<h1>Edit Fish</h1>
+<%= render "form", fish: @fish %>
+<br/>
+<button><%= link_to 'Delete Fish', fish_path(@fish), method: :delete, data: { confirm: 'Are you sure?' } %></button>

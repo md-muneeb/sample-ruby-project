@@ -1,10 +1,21 @@
 class ItemsController < ApplicationController
+
   def index
-    @items = Item.all
+    begin
+      @items = Item.all
+    rescue => e
+      render json: {message: e}, status: 404
+    end
   end
 
   def show
-    @item = Item.find(params[:id])
+    begin
+      @item = Item.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      render json: {message: e}, status: 404
+    rescue => e
+      render json: {message: e}, status: 404
+    end
   end
 
   def new
@@ -21,7 +32,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    begin
+      @item = Item.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      render json: {message: e}, status: 404
+    rescue => e
+      render json: {message: e}, status: 404
+    end
   end
 
   def update
@@ -34,13 +51,20 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to items_path
+    begin
+      @item = Item.find(params[:id])
+      @item.destroy
+      redirect_to items_path
+    rescue ActiveRecord::RecordNotFound => e
+      render json: {message: e}, status: 404
+    rescue => e
+      render json: {message: e}, status: 404 
+    end
   end
 
   private
     def item_params
       params.require(:item).permit(:name, :desc, :cost, :fish_id)
     end
+
 end

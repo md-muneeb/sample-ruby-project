@@ -27,3 +27,13 @@
      font-weight: bold;
      font-size: 18px;
  }
+
+ #form-table {
+     width:70% !important;
+     margin:0 auto !important;
+     text-align:left !important;
+ }
+
+ .errormsg {
+     color: red;
+ }

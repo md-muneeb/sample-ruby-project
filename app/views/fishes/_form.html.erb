@@ -1,6 +1,6 @@
-<%= form_with model: fish do |form| %>
+<%= form_with model: fish, url: path do |form| %>
   
-    <div style='color:red'>
+    <div class="errormsg">
         <% fish.errors.full_messages.each do |message| %>
           <div><%= message %></div>
         <% end %>
@@ -8,7 +8,7 @@
   
     <br/>
     
-    <table class="table" style='width:70%; margin:0 auto; text-align:left;'>
+    <table class="table" id="form-table">
      <tr>
         <td><%= form.label :name, 'Name' %>  </td>
         <td><%= form.text_field :name %> </td>

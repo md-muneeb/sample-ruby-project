@@ -36,4 +36,15 @@ RSpec.describe "Fish", :type => :request do
         expect(response).to render_template("edit")
     end
 
+    it "delete fish when given valid id" do
+        fish = FactoryBot.create(:fish, name: "Shark", age: 2)
+        delete "/fishes/#{fish.id}"
+        expect(response).to redirect_to(fishes_path)
+    end
+
+    it "does not delete fish when given invalid id" do
+        delete "/fishes/99"
+        expect(response).to have_http_status(404)
+    end
+
 end

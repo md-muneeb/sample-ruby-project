@@ -7,14 +7,14 @@ RSpec.describe "Fish", :type => :request do
     end
 
     it "successfully creates a new fish and redirects to index page" do
-        get new_fish_index_path
+        get new_fish_path
         expect(response).to render_template(:new)
         post fish_index_path, :params => { :fish => { :name => "Goldfish", :age => 2 }}
         expect(response).to redirect_to(fish_index_path)
     end
 
     it "does not creates a new fish because of failed validations" do
-        get new_fish_index_path
+        get new_fish_path
         expect(response).to render_template(:new)
         post fish_index_path, :params => { :fish => { :name => "Goldfish", :age => -4 }}
         expect(response).to render_template("new")

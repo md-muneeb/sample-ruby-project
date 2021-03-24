@@ -1,8 +1,8 @@
-class FishesController < ApplicationController
+class FishController < ApplicationController
 
   def index
     begin
-      @fishes = Fish.all
+      @fish = Fish.all
     rescue => e
       render json: {message: e}, status: 404
     end
@@ -15,7 +15,7 @@ class FishesController < ApplicationController
   def create
     @fish = Fish.new(fish_params)
     if @fish.save
-      redirect_to fishes_path
+      redirect_to fish_index_path
     else
       render :new
     end
@@ -34,7 +34,7 @@ class FishesController < ApplicationController
   def update
     @fish = Fish.find(params[:id])
     if @fish.update(fish_params)
-      redirect_to fishes_path
+      redirect_to fish_index_path
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class FishesController < ApplicationController
     begin
       @fish = Fish.find(params[:id])
       @fish.destroy
-      redirect_to fishes_path
+      redirect_to fish_index_path
     rescue ActiveRecord::RecordNotFound => e
       render json: {message: e}, status: 404
     rescue => e

@@ -20,7 +20,7 @@
       $<%= item.cost %>
     </td>
     <td>
-      <%= item.fish.name %>
+    <%= link_to item.fish.name, fish_path(item.fish) %>
     </td>
     </tr>
   <% end %>

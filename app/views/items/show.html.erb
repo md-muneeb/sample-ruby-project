@@ -1,0 +1,22 @@
+<h1>Item Details</h1>
+
+<table class="table">
+ <tr>
+ <td> Item Name </td>
+ <td>
+    <%= @item.name %>
+</td>
+</tr>
+<tr>
+ <td> Item Description </td>
+ <td> <%= @item.desc %></td>
+</tr>
+<tr>
+ <td> Item Cost </td>
+ <td><%= @item.cost %></td>
+</tr>
+<tr>
+ <td> Fish </td>
+ <td> <%= link_to @item.fish.name, fish_path(@item.fish) %> </td>
+</tr>
+</table>

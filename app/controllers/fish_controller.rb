@@ -12,6 +12,11 @@ class FishController < ApplicationController
     @fish = Fish.new
   end
 
+  def show
+    @fish = Fish.find(params[:id])
+    @items = @fish.items
+  end
+
   def create
     @fish = Fish.new(fish_params)
     if @fish.save

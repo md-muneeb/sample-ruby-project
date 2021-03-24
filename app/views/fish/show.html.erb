@@ -1,0 +1,33 @@
+<h1>Fish Details</h1>
+
+<table class="table">
+ <tr class='table-headers'>
+   <td> Name </td>
+   <td> Age </td>
+ </tr>
+<tr>
+<td>
+    <%= @fish.name %>
+</td>
+<td>
+    <%= @fish.age %>
+</td>
+</tr>
+</table>
+
+<h2> Fish items </h2>
+<table class="table">
+ <tr class='table-headers'>
+   <td> Item Name </td>
+   <td> Item Cost </td>
+ </tr>
+
+ <% @items.each do |item|%>
+    <tr>
+        <td> <%= link_to item.name, item_path(item) %></td>
+        <td> <%= item.cost %> </td>
+    </tr>
+ <% end %>
+ </table>
+
+
